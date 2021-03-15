@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DGP.Architecture.Portfolio.Controllers;
+using DGP.Architecture.Portfolio.Infrastructure.Repositories;
 
 namespace DGP.Architecture.Portfolio
 {
@@ -28,7 +29,7 @@ namespace DGP.Architecture.Portfolio
         {
             services.AddControllers();
 
-            services.AddTransient<IItemRepository, ItemRepository>();
+            services.AddSingleton<IItemRepository, ItemRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
