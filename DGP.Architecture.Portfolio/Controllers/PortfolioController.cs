@@ -20,6 +20,7 @@ namespace DGP.Architecture.Portfolio.Controllers
         public ItemDto GetItem(int id)
         {
             var item = _itemRepository.GetItem(id);
+            if (item == null) return null;
 
             var itemDto = MapToItemDto(item);
 
