@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using DGP.Architecture.Portfolio.Infrastructure.Models;
 
-namespace DGP.Architecture.Portfolio.Controllers
+namespace DGP.Architecture.Portfolio.Infrastructure.Repositories
 {
     public class ItemRepository : IItemRepository
     {

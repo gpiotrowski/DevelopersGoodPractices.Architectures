@@ -4,5 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DGP.Architecture.Portfolio.Application\DGP.Architecture.Portfolio.Application.csproj" />
+  </ItemGroup>
+
 
 </Project>

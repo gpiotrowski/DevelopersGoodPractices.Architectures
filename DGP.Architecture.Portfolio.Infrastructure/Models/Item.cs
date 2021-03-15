@@ -1,4 +1,4 @@
-﻿namespace DGP.Architecture.Portfolio.Controllers
+﻿namespace DGP.Architecture.Portfolio.Infrastructure.Models
 {
     public class Item
     {

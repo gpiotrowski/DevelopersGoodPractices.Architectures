@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using DGP.Architecture.Portfolio.Infrastructure.Models;
 
-namespace DGP.Architecture.Portfolio.Controllers
+namespace DGP.Architecture.Portfolio.Infrastructure.Repositories
 {
     public interface IItemRepository
     {
@@ -9,6 +10,6 @@ namespace DGP.Architecture.Portfolio.Controllers
         List<Item> GetItems(IEnumerable<int> ids);
         void AddItem(Item item);
         void UpdateItem(Item item);
-        public void RemoveItem(int itemId);
+        void RemoveItem(int itemId);
     }
 }

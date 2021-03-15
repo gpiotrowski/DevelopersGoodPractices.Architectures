@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
+using DGP.Architecture.Portfolio.Application.Services;
 
 namespace DGP.Architecture.Portfolio.Controllers
 {
@@ -9,95 +8,41 @@ namespace DGP.Architecture.Portfolio.Controllers
     [Route("[controller]")]
     public class PortfolioController : ControllerBase
     {
-        private readonly IItemRepository _itemRepository;
+        private readonly IPortfolioService _portfolioService;
 
-        public PortfolioController(IItemRepository itemRepository)
+        public PortfolioController(IPortfolioService portfolioService)
         {
-            _itemRepository = itemRepository;
+            _portfolioService = portfolioService;
         }
 
         [HttpGet("{id}")]
         public ItemDto GetItem(int id)
         {
-            var item = _itemRepository.GetItem(id);
-
-            var itemDto = MapToItemDto(item);
-
-            return itemDto;
+            return _portfolioService.GetItem(id);
         }
 
         [HttpGet]
         public List<ItemDto> GetItems()
         {
-            var items = _itemRepository.GetItems();
-
-            var itemsDto = items.Select(MapToItemDto).ToList();
-
-            return itemsDto;
+            return _portfolioService.GetAllItems();
         }
 
         [HttpPost]
         public void AddItem(NewItemDto newItemDto)
         {
-            var allItems = _itemRepository.GetItems();
-
-            if (allItems.Any(x => x.Name == newItemDto.Name))
-            {
-                throw new Exception("Item with that name already exist!");
-            }
-
-            if (newItemDto.Price < 0)
-            {
-                throw new Exception("Negative price not allowed!");
-            }
-
-            var newItem = new Item()
-            {
-                Name = newItemDto.Name,
-                Price = newItemDto.Price
-            };
-
-            _itemRepository.AddItem(newItem);
+            _portfolioService.AddItem(newItemDto);
         }
 
         [HttpPut("{id}")]
         public void UpdateItem(ItemDto itemDto)
         {
-            var item = _itemRepository.GetItem(itemDto.Id);
-
-            if(item == null)
-            {
-                throw new Exception("Requested item doesn't exist!");
-            }
-
-            item.Name = itemDto.Name;
-            item.Price = item.Price;
-
-            _itemRepository.UpdateItem(item);
+            _portfolioService.UpdateItem(itemDto);
         }
 
         [HttpDelete("{itemId}")]
         public void RemoveItem(int itemId)
         {
-            var item = _itemRepository.GetItem(itemId);
-
-            if(item == null)
-            {
-                throw new Exception("Requested item doesn't exist!");
-            }
-
-            _itemRepository.RemoveItem(itemId);
-        }
-
-
-        private ItemDto MapToItemDto(Item item)
-        {
-            return new ItemDto()
-            {
-                Id = item.Id,
-                Name = item.Name,
-                Price = item.Price
-            };
+            _portfolioService.RemoveItem(itemId);
         }
     }
 }
