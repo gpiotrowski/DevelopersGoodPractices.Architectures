@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using DGP.Architecture.Warehouse.Models;
+using DGP.Architecture.Warehouse.Domain.Models;
 
-namespace DGP.Architecture.Warehouse.Repositories
+namespace DGP.Architecture.Warehouse.Infrastructure.Repositories
 {
     public interface IProductRepository
     {

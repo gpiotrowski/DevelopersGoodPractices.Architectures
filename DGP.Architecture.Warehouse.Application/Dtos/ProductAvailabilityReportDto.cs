@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DGP.Architecture.Warehouse.Dtos
+namespace DGP.Architecture.Warehouse.Application.Dtos
 {
     public class ProductAvailabilityReportDto
     {

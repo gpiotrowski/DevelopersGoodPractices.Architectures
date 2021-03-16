@@ -1,7 +1,8 @@
-﻿using System.Linq;
-using DGP.Architecture.Warehouse.Dtos;
-using DGP.Architecture.Warehouse.Repositories;
-using DGP.Architecture.Warehouse.Services;
+﻿using System.Threading.Tasks;
+using DGP.Architecture.Warehouse.Application.Commands;
+using DGP.Architecture.Warehouse.Application.Dtos;
+using DGP.Architecture.Warehouse.Application.Queries;
+using DGP.Architecture.Warehouse.Common.Buses;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DGP.Architecture.Warehouse.Controllers
@@ -10,69 +11,36 @@ namespace DGP.Architecture.Warehouse.Controllers
     [ApiController]
     public class WarehousesController : ControllerBase
     {
-        private readonly IProductRepository _productRepository;
-        private readonly IProductStockHistoryService _productStockHistoryService;
+        private readonly IMessageBus _messageBus;
 
-        public WarehousesController(IProductRepository productRepository, IProductStockHistoryService productStockHistoryService)
+        public WarehousesController(IMessageBus messageBus)
         {
-            _productRepository = productRepository;
-            _productStockHistoryService = productStockHistoryService;
+            _messageBus = messageBus;
         }
 
         [HttpPost("products/{productId}/reservations")]
-        public void BookProducts(BookProductDto bookProductDto)
+        public async Task BookProducts(BookProduct command)
         {
-            var product = _productRepository.Get(bookProductDto.ProductId);
-
-            product.DecreaseAvailability();
-
-            _productRepository.Update(product);
+            await _messageBus.Send(command);
         }
 
         [HttpPut("products/{productId}/availability")]
-        public void UpdateProductAvailability(UpdateProductAvailabilityDto updateProductAvailabilityDto)
+        public async Task UpdateProductAvailability(UpdateProductAvailability command)
         {
-            var product = _productRepository.Get(updateProductAvailabilityDto.ProductId);
-
-            product.SetAvailability(updateProductAvailabilityDto.AvailableQuantity);
-
-            _productRepository.Update(product);
+            await _messageBus.Send(command);
 
         }
 
         [HttpGet("products/{productId}/availability")]
-        public ProductAvailabilityDto GetProductAvailability(int productId)
+        public async Task<ProductAvailabilityDto> GetProductAvailability([FromQuery] GetProductAvailability query)
         {
-            var product = _productRepository.Get(productId);
-
-            var productAvailabilityDto = new ProductAvailabilityDto()
-            {
-                ProductId = product.Id,
-                AvailableQuantity = product.AvailableQuantity
-            };
-
-            return productAvailabilityDto;
+            return await _messageBus.Query(query);
         }
 
         [HttpGet("products/availability")]
-        public ProductAvailabilityReportDto GetProductAvailabilityReport()
+        public async Task<ProductAvailabilityReportDto> GetProductAvailabilityReport([FromQuery] GetProductsAvailabilityReport query)
         {
-            var products = _productRepository.GetAll();
-
-            var report = new ProductAvailabilityReportDto()
-            {
-                ProductsAvailability = products
-                    .Select(x => new ProductAvailabilityReportDto.ProductAvailability()
-                    {
-                        ProductId = x.Id,
-                        ProductName = $"Product-{x.Id}",
-                        AvailableQuantity = x.AvailableQuantity,
-                        MaxAtStock = _productStockHistoryService.GetStockHistory(x.Id).StockHistory
-                            .Max(sh => sh.AvailableQuantity)
-                    }).ToList()
-            };
-
-            return report;
+            return await _messageBus.Query(query);
         }
     }
 }

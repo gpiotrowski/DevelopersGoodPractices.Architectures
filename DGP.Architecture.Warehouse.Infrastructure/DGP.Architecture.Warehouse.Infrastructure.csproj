@@ -5,9 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DGP.Architecture.Warehouse.Common\DGP.Architecture.Warehouse.Common.csproj" />
     <ProjectReference Include="..\DGP.Architecture.Warehouse.Domain\DGP.Architecture.Warehouse.Domain.csproj" />
-    <ProjectReference Include="..\DGP.Architecture.Warehouse.Infrastructure\DGP.Architecture.Warehouse.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

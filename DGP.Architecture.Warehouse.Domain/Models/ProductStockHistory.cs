@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DGP.Architecture.Warehouse.Models
+namespace DGP.Architecture.Warehouse.Domain.Models
 {
     public class ProductStockHistory
     {

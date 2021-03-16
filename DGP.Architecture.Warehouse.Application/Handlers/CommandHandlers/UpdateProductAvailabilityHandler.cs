@@ -7,20 +7,20 @@ using MediatR;
 
 namespace DGP.Architecture.Warehouse.Application.Handlers.CommandHandlers
 {
-    public class BookProductHandler : ICommandHandler<BookProduct>
+    public class UpdateProductAvailabilityHandler : ICommandHandler<UpdateProductAvailability>
     {
         private readonly IProductRepository _productRepository;
 
-        public BookProductHandler(IProductRepository productRepository)
+        public UpdateProductAvailabilityHandler(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }
 
-        public Task<Unit> Handle(BookProduct request, CancellationToken cancellationToken)
+        public Task<Unit> Handle(UpdateProductAvailability request, CancellationToken cancellationToken)
         {
             var product = _productRepository.Get(request.ProductId);
 
-            product.DecreaseAvailability();
+            product.SetAvailability(request.AvailableQuantity);
 
             _productRepository.Update(product);
 

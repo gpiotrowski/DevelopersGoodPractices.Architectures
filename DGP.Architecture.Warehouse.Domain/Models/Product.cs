@@ -1,4 +1,4 @@
-﻿namespace DGP.Architecture.Warehouse.Models
+﻿namespace DGP.Architecture.Warehouse.Domain.Models
 {
     public class Product
     {

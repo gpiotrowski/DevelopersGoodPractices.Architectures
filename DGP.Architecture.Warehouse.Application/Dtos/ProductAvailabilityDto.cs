@@ -1,4 +1,4 @@
-﻿namespace DGP.Architecture.Warehouse.Dtos
+﻿namespace DGP.Architecture.Warehouse.Application.Dtos
 {
     public class ProductAvailabilityDto
     {

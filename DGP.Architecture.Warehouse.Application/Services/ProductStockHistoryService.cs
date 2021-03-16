@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
-using DGP.Architecture.Warehouse.Models;
+using DGP.Architecture.Warehouse.Domain.Models;
 
-namespace DGP.Architecture.Warehouse.Services
+namespace DGP.Architecture.Warehouse.Application.Services
 {
     public class ProductStockHistoryService : IProductStockHistoryService
     {

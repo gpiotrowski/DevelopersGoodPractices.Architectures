@@ -1,12 +1,12 @@
 using DGP.Architecture.Warehouse.Application.Handlers.CommandHandlers;
+using DGP.Architecture.Warehouse.Application.Services;
 using DGP.Architecture.Warehouse.Common.Buses;
+using DGP.Architecture.Warehouse.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using DGP.Architecture.Warehouse.Repositories;
-using DGP.Architecture.Warehouse.Services;
 using MediatR;
 
 namespace DGP.Architecture.Warehouse
