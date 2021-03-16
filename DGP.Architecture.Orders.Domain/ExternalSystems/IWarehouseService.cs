@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DGP.Architecture.Orders.ExternalSystems
+namespace DGP.Architecture.Orders.Domain.ExternalSystems
 {
     public interface IWarehouseService
     {

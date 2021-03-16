@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DGP.Architecture.Orders.Models
+namespace DGP.Architecture.Orders.Domain.Models
 {
     public class Order
     {

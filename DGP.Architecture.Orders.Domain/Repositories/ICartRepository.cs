@@ -1,6 +1,6 @@
-﻿using DGP.Architecture.Orders.Models;
+﻿using DGP.Architecture.Orders.Domain.Models;
 
-namespace DGP.Architecture.Orders.Repositories
+namespace DGP.Architecture.Orders.Domain.Repositories
 {
     public interface ICartRepository
     {

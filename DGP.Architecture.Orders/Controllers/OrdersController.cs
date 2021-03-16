@@ -1,5 +1,5 @@
-﻿using DGP.Architecture.Orders.Dtos;
-using DGP.Architecture.Orders.Services;
+﻿using DGP.Architecture.Orders.Domain.Dtos;
+using DGP.Architecture.Orders.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DGP.Architecture.Orders.Controllers

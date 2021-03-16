@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using DGP.Architecture.Orders.Domain.ExternalSystems;
 
-namespace DGP.Architecture.Orders.ExternalSystems
+namespace GDP.Architecture.Orders.WarehouseAdapter
 {
     public class WarehouseService : IWarehouseService
     {

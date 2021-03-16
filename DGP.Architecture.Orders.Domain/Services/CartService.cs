@@ -1,8 +1,8 @@
-﻿using DGP.Architecture.Orders.Dtos;
-using DGP.Architecture.Orders.Models;
-using DGP.Architecture.Orders.Repositories;
+﻿using DGP.Architecture.Orders.Domain.Dtos;
+using DGP.Architecture.Orders.Domain.Models;
+using DGP.Architecture.Orders.Domain.Repositories;
 
-namespace DGP.Architecture.Orders.Services
+namespace DGP.Architecture.Orders.Domain.Services
 {
     public class CartService : ICartService
     {

@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using DGP.Architecture.Orders.Models;
+using DGP.Architecture.Orders.Domain.Models;
+using DGP.Architecture.Orders.Domain.Repositories;
 
-namespace DGP.Architecture.Orders.Repositories
+namespace DGP.Architecture.Orders.Infrastructure.Repositories
 {
     public class CartRepository : ICartRepository
     {

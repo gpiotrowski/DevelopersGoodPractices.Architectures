@@ -1,6 +1,6 @@
-﻿using DGP.Architecture.Orders.Dtos;
+﻿using DGP.Architecture.Orders.Domain.Dtos;
 
-namespace DGP.Architecture.Orders.Services
+namespace DGP.Architecture.Orders.Domain.Services
 {
     public interface IOrdersService
     {

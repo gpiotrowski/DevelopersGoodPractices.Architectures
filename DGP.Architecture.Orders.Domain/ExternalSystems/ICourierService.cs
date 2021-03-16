@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DGP.Architecture.Orders.ExternalSystems
+namespace DGP.Architecture.Orders.Domain.ExternalSystems
 {
     public interface ICourierService
     {

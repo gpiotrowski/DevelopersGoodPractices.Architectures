@@ -1,4 +1,4 @@
-﻿namespace DGP.Architecture.Orders.Dtos
+﻿namespace DGP.Architecture.Orders.Domain.Dtos
 {
     public class CartDto
     {

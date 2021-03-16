@@ -4,5 +4,12 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DGP.Architecture.Orders.CourierSystemAdapter\DGP.Architecture.Orders.CourierSystemAdapter.csproj" />
+    <ProjectReference Include="..\DGP.Architecture.Orders.Domain\DGP.Architecture.Orders.Domain.csproj" />
+    <ProjectReference Include="..\DGP.Architecture.Orders.Infrastructure\DGP.Architecture.Orders.Infrastructure.csproj" />
+    <ProjectReference Include="..\DGP.Architecture.Orders.WarehouseAdapter\DGP.Architecture.Orders.WarehouseAdapter.csproj" />
+  </ItemGroup>
+
 
 </Project>

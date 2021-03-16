@@ -1,6 +1,7 @@
 ﻿using System;
+using DGP.Architecture.Orders.Domain.ExternalSystems;
 
-namespace DGP.Architecture.Orders.ExternalSystems
+namespace DGP.Architecture.Orders.CourierSystemAdapter
 {
     public class CourierService : ICourierService
     {

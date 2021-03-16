@@ -1,11 +1,14 @@
+using DGP.Architecture.Orders.CourierSystemAdapter;
+using DGP.Architecture.Orders.Domain.ExternalSystems;
+using DGP.Architecture.Orders.Domain.Repositories;
+using DGP.Architecture.Orders.Domain.Services;
+using DGP.Architecture.Orders.Infrastructure.Repositories;
+using GDP.Architecture.Orders.WarehouseAdapter;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using DGP.Architecture.Orders.ExternalSystems;
-using DGP.Architecture.Orders.Repositories;
-using DGP.Architecture.Orders.Services;
 
 namespace DGP.Architecture.Orders
 {
