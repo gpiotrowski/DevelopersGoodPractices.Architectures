@@ -4,5 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DGP.Architecture.Warehouse.Application\DGP.Architecture.Warehouse.Application.csproj" />
+    <ProjectReference Include="..\DGP.Architecture.Warehouse.Common\DGP.Architecture.Warehouse.Common.csproj" />
+  </ItemGroup>
+
 
 </Project>
