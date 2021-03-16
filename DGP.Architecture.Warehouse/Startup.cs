@@ -26,6 +26,7 @@ namespace DGP.Architecture.Warehouse
             services.AddControllers();
 
             services.AddSingleton<IProductRepository, ProductRepository>();
+            services.AddSingleton<IProductsAvailabilityReportReadModelRepository, ProductsAvailabilityReportReadModelRepository>();
             services.AddTransient<IProductStockHistoryService, ProductStockHistoryService>();
 
             services.AddMediatR(typeof(BookProductHandler));

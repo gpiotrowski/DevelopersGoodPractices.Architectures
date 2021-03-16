@@ -3,7 +3,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using DGP.Architecture.Warehouse.Application.Dtos;
 using DGP.Architecture.Warehouse.Application.Queries;
-using DGP.Architecture.Warehouse.Application.Services;
 using DGP.Architecture.Warehouse.Common.Handlers;
 using DGP.Architecture.Warehouse.Infrastructure.Repositories;
 
@@ -11,33 +10,28 @@ namespace DGP.Architecture.Warehouse.Application.Handlers.QueryHandlers
 {
     public class GetProductsAvailabilityReportHandler : IQueryHandler<GetProductsAvailabilityReport, ProductAvailabilityReportDto>
     {
-        private readonly IProductRepository _productRepository;
-        private readonly IProductStockHistoryService _productStockHistoryService;
+        private readonly IProductsAvailabilityReportReadModelRepository _productsAvailabilityReportReadModelRepository;
 
-        public GetProductsAvailabilityReportHandler(IProductRepository productRepository, IProductStockHistoryService productStockHistoryService)
+        public GetProductsAvailabilityReportHandler(IProductsAvailabilityReportReadModelRepository productsAvailabilityReportReadModelRepository)
         {
-            _productRepository = productRepository;
-            _productStockHistoryService = productStockHistoryService;
+            _productsAvailabilityReportReadModelRepository = productsAvailabilityReportReadModelRepository;
         }
 
         public async Task<ProductAvailabilityReportDto> Handle(GetProductsAvailabilityReport request, CancellationToken cancellationToken)
         {
-            var products = _productRepository.GetAll();
+            var productsAvailabilityReportReadModels = _productsAvailabilityReportReadModelRepository.GetAll();
 
-            var report = new ProductAvailabilityReportDto()
+            return new ProductAvailabilityReportDto()
             {
-                ProductsAvailability = products
-                    .Select(x => new ProductAvailabilityReportDto.ProductAvailability()
+                ProductsAvailability = productsAvailabilityReportReadModels.Select(x =>
+                    new ProductAvailabilityReportDto.ProductAvailability()
                     {
-                        ProductId = x.Id,
-                        ProductName = $"Product-{x.Id}",
+                        ProductId = x.ProductId,
+                        ProductName = x.ProductName,
                         AvailableQuantity = x.AvailableQuantity,
-                        MaxAtStock = _productStockHistoryService.GetStockHistory(x.Id).StockHistory
-                            .Max(sh => sh.AvailableQuantity)
+                        MaxAtStock = x.MaxAtStock
                     }).ToList()
             };
-
-            return report;
         }
     }
 }
