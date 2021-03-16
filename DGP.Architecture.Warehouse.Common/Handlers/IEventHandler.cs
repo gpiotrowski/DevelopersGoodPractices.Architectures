@@ -3,8 +3,7 @@ using MediatR;
 
 namespace DGP.Architecture.Warehouse.Common.Handlers
 {
-    public interface ICommandHandler<TCommand> : IRequestHandler<TCommand> where TCommand : ICommand
+    public interface IEventHandler<TEvent> : INotificationHandler<TEvent> where TEvent : IEvent
     {
-
     }
 }

@@ -13,14 +13,19 @@ namespace DGP.Architecture.Warehouse.Common.Buses
             _mediator = mediator;
         }
 
-        public Task Send(IMessage message)
+        public Task Send(ICommand message)
         {
             return _mediator.Send(message);
         }
 
-        public Task<T> Query<T>(IMessage<T> message)
+        public Task<T> Query<T>(IQuery<T> message)
         {
             return _mediator.Send(message);
+        }
+
+        public Task Publish(IEvent @event)
+        {
+            return _mediator.Publish(@event);
         }
     }
 }
